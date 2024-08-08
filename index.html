@@ -657,36 +657,36 @@ rel="stylesheet">
                                 <div class="column is-6">
                                     <div class="control">
                                         <label>First name *</label>
-                                        <input class="input is-medium" type="text" id="na" required>
+                                        <input class="input is-medium" type="text" name="fname"required>
                                     </div>
                                 </div>
                                 <div class="column is-6">
                                     <div class="control">
                                         <label>Last name *</label>
-                                        <input class="input is-medium" type="text" required>
+                                        <input class="input is-medium" type="text" name="lname" required>
                                     </div>
                                 </div>
                                 <div class="column is-6">
                                     <div class="control">
                                         <label>Email *</label>
-                                        <input class="input is-medium" type="email" id="em" required>
+                                        <input class="input is-medium" type="email" name="email" required>
                                     </div>
                                 </div>
                                 <div class="column is-6">
                                     <div class="control">
                                         <label>Phone</label>
-                                        <input class="input is-medium" type="text" id="we">
+                                        <input class="input is-medium" type="text" name="phone">
                                     </div>
                                 </div>
                                 <div class="column is-12">
                                     <div class="control">
                                         <label>Message *</label>
-                                        <textarea class="textarea" rows="4" id="me" required></textarea>
+                                        <textarea class="textarea" rows="4" name="message" required></textarea>
                                     </div>
                                 </div>
                             </div>
                             <div class="submit-wrapper" style="float:right;">
-                                <button class="button button-cta is-bold btn-align bg-m-blue7 m-white raised" style="border:none;" id="sendmsg" onclick="step1(event);">
+                                <button class="button button-cta is-bold btn-align bg-m-blue7 m-white raised" style="border:none;" type="submit"">
                                         Send Message
                                     </button>
                             </div>
@@ -837,39 +837,28 @@ rel="stylesheet">
     <script src="assets/js/main.js"></script>
     <script>
         //------------------------------------------send msg------
-     <!--function step1(e) {
+     const handleSubmit = (event) => {
+  event.preventDefault();
 
-            var name = document.getElementById("na").value;
-            var email = document.getElementById("em").value;
-            var website = document.getElementById("we").value;
-            var msg = document.getElementById("me").value;
-            if (name != "" && email != "" && msg != "") {
-                e.preventDefault();
-                $("#sendmsg").addClass('is-loading');
-                $.ajax({
-                    type: 'post',
-                    url: 'store_info.php',
-                    data: {
-                        name: name,
-                        email: email,
-                        website: website,
-                        message: msg
-                    },
-                    success: function(response) {
-                        if (response != "NO") {
-                            $("#sendmsg").removeClass('is-loading');
-                            $("#sendmsg").html('Sent Successfully !');
-                            document.getElementById("contactform").reset();
-                        }
-                        //step2();
+  const myForm = event.target;
+  const formData = new FormData(myForm);
+  
+  fetch("/", {
+    method: "POST",
+    headers: { "Content-Type": "application/x-www-form-urlencoded" },
+    body: new URLSearchParams(formData).toString(),
+  })
+    .then(() => console.log("Form successfully submitted"))
+    .catch((error) => alert(error));
+};
 
-                    }
-                });
-            }
+document
+  .querySelector("form")
+  .addEventListener("submit", handleSubmit);
 
-
-
-        }-->
+    </script>
+ <script>
+	    
         // JavaScript to lazy load images
         document.addEventListener("DOMContentLoaded", function() {
             var lazyImages = document.querySelectorAll('img[data-src]');
