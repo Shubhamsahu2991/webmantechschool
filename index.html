@@ -835,29 +835,41 @@ rel="stylesheet">
     <script src="assets/js/landingv3.js"></script>
     <script src="assets/js/auth.js"></script>
     <script src="assets/js/main.js"></script>
-    <script>
-        //------------------------------------------send msg------
-     const handleSubmit = (event) => {
-  event.preventDefault();
-
-  const myForm = event.target;
-  const formData = new FormData(myForm);
-  
-  fetch("/", {
-    method: "POST",
-    headers: { "Content-Type": "application/x-www-form-urlencoded" },
-    body: new URLSearchParams(formData).toString(),
-  })
-    .then(() => console.log("Form successfully submitted"))
-    .catch((error) => alert(error));
-};
-
-document
-  .querySelector("form")
-  .addEventListener("submit", handleSubmit);
-
-    </script>
+    
  <script>
+	 function step1(e) {
+
+            var name = document.getElementById("na").value;
+            var email = document.getElementById("em").value;
+            var website = document.getElementById("we").value;
+            var msg = document.getElementById("me").value;
+            if (name != "" && email != "" && msg != "") {
+                e.preventDefault();
+                $("#sendmsg").addClass('is-loading');
+                $.ajax({
+                    type: 'post',
+                    url: 'store_info.php',
+                    data: {
+                        name: name,
+                        email: email,
+                        website: website,
+                        message: msg
+                    },
+                    success: function(response) {
+                        if (response != "NO") {
+                            $("#sendmsg").removeClass('is-loading');
+                            $("#sendmsg").html('Sent Successfully !');
+                            document.getElementById("contactform").reset();
+                        }
+                        //step2();
+
+                    }
+                });
+            }
+
+
+
+        }
 	    
         // JavaScript to lazy load images
         document.addEventListener("DOMContentLoaded", function() {
