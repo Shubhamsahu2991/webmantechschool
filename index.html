@@ -652,41 +652,41 @@ rel="stylesheet">
                 <div class="column is-6">
                     <!-- Contact form -->
                     <div class="contact-form pt-20 m-white">
-                        <form id="contactform" name="Contact" method="POST" netlify data-netlify="true">
+                        <form id="contactform" netlify >
                             <div class="columns is-multiline">
                                 <div class="column is-6">
                                     <div class="control">
                                         <label>First name *</label>
-                                        <input class="input is-medium" type="text" name="fname"required>
+                                        <input class="input is-medium" type="text" id="na" required>
                                     </div>
                                 </div>
                                 <div class="column is-6">
                                     <div class="control">
                                         <label>Last name *</label>
-                                        <input class="input is-medium" type="text" name="lname" required>
+                                        <input class="input is-medium" type="text" required>
                                     </div>
                                 </div>
                                 <div class="column is-6">
                                     <div class="control">
                                         <label>Email *</label>
-                                        <input class="input is-medium" type="email" name="email" required>
+                                        <input class="input is-medium" type="email" id="em" required>
                                     </div>
                                 </div>
                                 <div class="column is-6">
                                     <div class="control">
                                         <label>Phone</label>
-                                        <input class="input is-medium" type="text" name="phone">
+                                        <input class="input is-medium" type="text" id="we">
                                     </div>
                                 </div>
                                 <div class="column is-12">
                                     <div class="control">
                                         <label>Message *</label>
-                                        <textarea class="textarea" rows="4" name="message" required></textarea>
+                                        <textarea class="textarea" rows="4" id="me" required></textarea>
                                     </div>
                                 </div>
                             </div>
                             <div class="submit-wrapper" style="float:right;">
-                                <button class="button button-cta is-bold btn-align bg-m-blue7 m-white raised" style="border:none;" type="submit"">
+                                <button class="button button-cta is-bold btn-align bg-m-blue7 m-white raised" style="border:none;" id="sendmsg" onclick="step1(event);">
                                         Send Message
                                     </button>
                             </div>
